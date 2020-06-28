@@ -42,7 +42,7 @@ class Game{
     for(int i = 0; i < 12; i++){
       for(int j = 0; j < 7; j++){
         fill(colset[s.colors[cnt]]);
-        figure(cnt,50+i*100,225+j*100);  
+        figure(s.objects[cnt],50+i*100,225+j*100);  
         cnt++;
       }
     }
@@ -57,7 +57,7 @@ class Game{
     ellipse(700,60,100,100);
     
     fill(colset[s.tercol]);
-    figure(s.objects[s.terobj],580,75);
+    figure(s.terobj,580,75);
     
     fill(0);
     textSize(60);
@@ -76,11 +76,11 @@ class Game{
     strokeWeight(2);
     stroke(0);
     
-    if(s.objects[n] == 0){
+    if(n == 0){
       rect(x,y,100,100);
-    }else if(s.objects[n] == 1){
+    }else if(n == 1){
       ellipse(x,y,100,100);
-    }else if(s.objects[n] == 2){
+    }else if(n == 2){
       float a,b;
       strokeJoin(ROUND); 
       pushMatrix();
@@ -94,7 +94,7 @@ class Game{
       }
       endShape(CLOSE);
       popMatrix();
-    }else if(s.objects[n] == 3){
+    }else if(n == 3){
       int prickleNum = 5;
       float r = 47.5;
       int vertexNum = prickleNum*2;  
@@ -115,7 +115,7 @@ class Game{
       }
       endShape(CLOSE);
       popMatrix();
-    }else if(s.objects[n] == 4){
+    }else if(n == 4){
       float r = 47.0;
       float R;
       pushMatrix();
