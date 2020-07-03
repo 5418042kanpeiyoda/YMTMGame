@@ -1,14 +1,17 @@
 abstract class Game{
-  int timeLimit = 60;
-  int countDown;
+  int timeLimit = 10;
+  int countDown = timeLimit;
   int[] level;
   int colN;
   int objN;
   int items;
+  int targetX;
+  int targetY;
+  boolean targetClick = false;
   color[] colset;
   Colors c;
   Dataset s;
-  
+  End e;
   Game(int[] lev,int it,int co, int ob){
     level = lev;
     items = it;
@@ -17,33 +20,40 @@ abstract class Game{
     colset = new color[colN];
     s = new Dataset(items);
     c = new Colors();
+    e = new End();
     colset = c.randset(colN);
     s.dset(objN,colset);
-    println("tercol"+s.tercol+"  terobj"+s.terobj);
-    for(int i = 0; i < items; i++){
-      if(s.colors[i] == s.tercol && s.terobj  == s.objects[i]){
-        print("   ");
-      }
-      println("col"+s.colors[i] + "col"+s.objects[i] );
-    }
   }
   
   void mainGame(){
     background(colset[0]);
     int ms = millis()/1000;
-    countDown = timeLimit - ms;
-    
-    if(countDown > 0){
+    if(countDown > 0&& targetClick==false){
+      countDown = timeLimit - ms;
       drawTop();
       drawobj();
-    }else{
-      text("TimeUp", width/2, height/2);
+    }
+    if(countDown > 0&& targetClick==true){
+      e.clear_Judge = true;
+      e.display();
+      e.example();
+    }else if(countDown==0){
+      e.clear_Judge = false;
+      e.display();
+      e.example();
     }
   }
   
-  abstract void drawobj();
-  abstract void moveobj();  
-  
+  void drawobj(){
+  }
+  boolean isFigureClick(){
+    if(dist(mouseX,mouseY,targetX,targetY)<50){
+      
+      return true;
+    }
+    return false;
+  }
+  abstract void moveobj();
   void drawTop(){
     stroke(0);
     fill(colset[s.tercol]);
@@ -53,30 +63,30 @@ abstract class Game{
     ellipse(700,60,100,100);
     
     fill(colset[s.tercol]);
-    figure(s.terobj,580,75);
+    figure(s.objects[s.terobj],580,75);
     
     fill(0);
     textSize(60);
-    text(countDown, 700, 78);
+    text(countDown, 700, 60);
     if(level[0] == 1){
-      text("EASY",200, 95);
+      text("EASY",200, 75);
     }else if(level[0] == 2){
-      text("NORMAL",200, 95);
+      text("NORMAL",200, 75);
     }else{
-      text("HARD",200, 95);
+      text("HARD",200, 75);
     }
-    text("LEVEL:"+level[1], 1000, 95);
+    text("LEVEL:"+level[1], 1000, 75);
   }
   
   void figure(int n, float x,float y){
     strokeWeight(2);
     stroke(0);
     
-    if(n == 0){
+    if(s.objects[n] == 0){
       rect(x,y,100,100);
-    }else if(n == 1){
+    }else if(s.objects[n] == 1){
       ellipse(x,y,100,100);
-    }else if(n == 2){
+    }else if(s.objects[n] == 2){
       float a,b;
       strokeJoin(ROUND); 
       pushMatrix();
@@ -90,7 +100,7 @@ abstract class Game{
       }
       endShape(CLOSE);
       popMatrix();
-    }else if(n == 3){
+    }else if(s.objects[n] == 3){
       int prickleNum = 5;
       float r = 47.5;
       int vertexNum = prickleNum*2;  
@@ -111,7 +121,7 @@ abstract class Game{
       }
       endShape(CLOSE);
       popMatrix();
-    }else if(n == 4){
+    }else if(s.objects[n] == 4){
       float r = 47.0;
       float R;
       pushMatrix();
@@ -127,7 +137,7 @@ abstract class Game{
       }
     endShape(CLOSE);
     popMatrix();
-  }else if(n == 5){
+  }else{
     float vertical = 30.5;
     float side = 100;
     rect(x, y, side, vertical);
@@ -135,5 +145,5 @@ abstract class Game{
     noStroke();
     rect(x,y,vertical+4,vertical+4);
   }
-  }
+}
 }
