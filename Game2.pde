@@ -1,4 +1,4 @@
-class Game1 extends Game{
+class Game2 extends Game{
   float x[] = new float[items];
   float y[] = new float[items];
   Game1(int[] lev,int it,int co, int ob){
@@ -19,17 +19,17 @@ class Game1 extends Game{
       for(int j = 0; j < 5; j++){
         fill(colset[s.colors[cnt]]);
         figure(s.objects[cnt],x[cnt],y[cnt]);
-        moveobj(i,j,cnt);
+        moveobj(i,j,cnt,1);
         cnt++;
       }
     }
   }
   
-  void moveobj(int i,int j,int cnt){  
+  void moveobj(int i,int j,int cnt,int s){  
     if(i % 2 == 0){
-      y[cnt]++;
+      y[cnt] += s;
     }else{
-      y[cnt]--;
+      y[cnt] -= s;
     }
     if(i % 2 == 0 && y[cnt] > height+50){
       y[cnt] = 100;
