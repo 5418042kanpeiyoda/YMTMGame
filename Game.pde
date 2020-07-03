@@ -53,7 +53,7 @@ abstract class Game{
     }
     return false;
   }
-  abstract void moveobj();
+  abstract void moveobj(int i,int j, int cnt,int s);
   void drawTop(){
     stroke(0);
     fill(colset[s.tercol]);
