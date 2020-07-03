@@ -5,6 +5,9 @@ abstract class Game{
   int colN;
   int objN;
   int items;
+  int targetX;
+  int targetY;
+  boolean targetClick = false;
   color[] colset;
   Colors c;
   Dataset s;
@@ -43,6 +46,13 @@ abstract class Game{
   
   abstract void drawobj();
   abstract void moveobj(int i,int j, int cnt,int s);  
+  
+  boolean isFigureClick(){
+    if(dist(mouseX,mouseY,targetX,targetY)<50){
+      return true;
+    }
+    return false;
+  }
   
   void drawTop(){
     stroke(0);
