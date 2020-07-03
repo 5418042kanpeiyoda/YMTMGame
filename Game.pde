@@ -1,5 +1,5 @@
-class Game{
-  int timeLimit = 10;
+abstract class Game{
+  int timeLimit = 60;
   int countDown;
   int[] level;
   int colN;
@@ -8,7 +8,7 @@ class Game{
   color[] colset;
   Colors c;
   Dataset s;
-  End e;
+  
   Game(int[] lev,int it,int co, int ob){
     level = lev;
     items = it;
@@ -17,9 +17,15 @@ class Game{
     colset = new color[colN];
     s = new Dataset(items);
     c = new Colors();
-    e = new End();
     colset = c.randset(colN);
     s.dset(objN,colset);
+    println("tercol"+s.tercol+"  terobj"+s.terobj);
+    for(int i = 0; i < items; i++){
+      if(s.colors[i] == s.tercol && s.terobj  == s.objects[i]){
+        print("   ");
+      }
+      println("col"+s.colors[i] + "col"+s.objects[i] );
+    }
   }
   
   void mainGame(){
@@ -31,22 +37,12 @@ class Game{
       drawTop();
       drawobj();
     }else{
-      e.clear_Judge = false;
-      e.display();
-      e.example();
+      text("TimeUp", width/2, height/2);
     }
   }
   
-  void drawobj(){
-    int cnt = 0;
-    for(int i = 0; i < 12; i++){
-      for(int j = 0; j < 7; j++){
-        fill(colset[s.colors[cnt]]);
-        figure(s.objects[cnt],50+i*100,225+j*100);  
-        cnt++;
-      }
-    }
-  }
+  abstract void drawobj();
+  abstract void moveobj();  
   
   void drawTop(){
     stroke(0);
@@ -61,15 +57,15 @@ class Game{
     
     fill(0);
     textSize(60);
-    text(countDown, 700, 60);
+    text(countDown, 700, 78);
     if(level[0] == 1){
-      text("EASY",200, 75);
+      text("EASY",200, 95);
     }else if(level[0] == 2){
-      text("NORMAL",200, 75);
+      text("NORMAL",200, 95);
     }else{
-      text("HARD",200, 75);
+      text("HARD",200, 95);
     }
-    text("LEVEL:"+level[1], 1000, 75);
+    text("LEVEL:"+level[1], 1000, 95);
   }
   
   void figure(int n, float x,float y){
@@ -131,7 +127,7 @@ class Game{
       }
     endShape(CLOSE);
     popMatrix();
-  }else{
+  }else if(n == 5){
     float vertical = 30.5;
     float side = 100;
     rect(x, y, side, vertical);
@@ -139,5 +135,5 @@ class Game{
     noStroke();
     rect(x,y,vertical+4,vertical+4);
   }
-}
+  }
 }
