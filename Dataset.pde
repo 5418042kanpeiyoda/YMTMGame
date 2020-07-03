@@ -22,10 +22,9 @@ class Dataset{
       }else{
         objects[i] = int(random(obj));
         colors[i] = int(random(col.length));
-        if(objects[i] == objTerget && colors[i] == colTerget){
+        while(objects[i] == objTerget && colors[i] == colTerget){
           objects[i] = int(random(obj));
           colors[i] = int(random(col.length));
-          continue;
         }
       }
     }
