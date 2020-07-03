@@ -7,12 +7,15 @@ class Game1 extends Game{
     for(int i = 0; i < 12; i++){
       for(int j = 0; j < 7; j++){
         fill(colset[s.colors[cnt]]);
-        figure(s.objects[cnt],50+i*100,225+j*100);
+        figure(cnt,50+i*100,225+j*100);
+        if(s.terobj==s.objects[cnt]&&s.tercol==s.colors[cnt]){
+          g.targetX = 50+i*100;
+          g.targetY = 225+j*100;
+        }
         cnt++;
       }
     }
   }
-  
   void moveobj(){  
     //do nothing
   }
