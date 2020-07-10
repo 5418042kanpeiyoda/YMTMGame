@@ -5,10 +5,9 @@ abstract class Game{
   int colN;
   int objN;
   int items;
-  int targetX;
-  int targetY;
-  boolean targetClick = false;
   color[] colset;
+  boolean clear = false;
+  int cleartime = 0;
   Colors c;
   Dataset s;
   
@@ -22,7 +21,7 @@ abstract class Game{
     c = new Colors();
     colset = c.randset(colN);
     s.dset(objN,colset);
-    println("tercol"+s.tercol+"  terobj"+s.terobj);
+     println("tercol"+s.tercol+"  terobj"+s.terobj);
     for(int i = 0; i < items; i++){
       if(s.colors[i] == s.tercol && s.terobj  == s.objects[i]){
         print("   ");
@@ -36,9 +35,13 @@ abstract class Game{
     int ms = millis()/1000;
     countDown = timeLimit - ms;
     
-    if(countDown > 0){
+    if(countDown > 0 && clear == false){
       drawobj();
       drawTop();
+      cleartime = countDown;
+    }else if(countDown > 0 && clear == true){
+      text("CLEAR", width/2, height/2);
+      text("ClearTime: " + (60-cleartime) + "seonds", width/2, height/2 + 100);
     }else{
       text("TimeUp", width/2, height/2);
     }
@@ -46,13 +49,6 @@ abstract class Game{
   
   abstract void drawobj();
   abstract void moveobj(int i,int j, int cnt,int s);  
-  
-  boolean isFigureClick(){
-    if(dist(mouseX,mouseY,targetX,targetY)<50){
-      return true;
-    }
-    return false;
-  }
   
   void drawTop(){
     stroke(0);
@@ -76,6 +72,16 @@ abstract class Game{
       text("HARD",200, 95);
     }
     text("LEVEL:"+level[1], 1000, 95);
+  }
+  
+  void checkInObj(int obj, int col,float x, float y){
+    if(mousePressed){
+      if(dist(mouseX,mouseY,x,y) < 50){
+        if(obj == s.terobj && col == s.tercol){
+          clear = true;
+        }
+      }
+    }
   }
   
   void figure(int n, float x,float y){
