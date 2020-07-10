@@ -19,6 +19,7 @@ class Game2 extends Game{
       for(int j = 0; j < 5; j++){
         fill(colset[s.colors[cnt]]);
         figure(s.objects[cnt],x[cnt],y[cnt]);
+        checkInObj(s.objects[cnt],s.colors[cnt],x[cnt], y[cnt]);
         moveobj(i,j,cnt,1);
         cnt++;
       }
