@@ -5,7 +5,8 @@ int[] level = {2,5};
 int item = 84;
 int col = 10;
 int obj = 6;
-Game g = new Game(level, item, col, obj);
+Game g1 = new Game1(level, item, col, obj);
+Game g2 = new Game2(level, 42, col, obj);
 //初期画面の判定
 int len=100;
 boolean[] clickJudge = new boolean[len];
@@ -35,7 +36,7 @@ void draw(){
   }else if(clickJudge[1]!=true){
     sl.display();
   }else{
-    g.mainGame();
+    g1.mainGame();
   }
 }
 
@@ -48,18 +49,22 @@ void mouseClicked(){
         clickJudge[i+2]=clickBox(sl.rxl[i],sl.rxr[i],sl.ryu[i],sl.ryb[i]);
       }else{
         if(0<=i&&i<=2){
-          g.level[0]=1;
-          g.level[1]=i+1;
+          g1.level[0]=1;
+          g1.level[1]=i+1;
         }else if(i<=5){
-          g.level[0]=2;
-          g.level[1]=i+1-3;
+          g1.level[0]=2;
+          g1.level[1]=i+1-3;
         }else{
-          g.level[0]=3;
-          g.level[1]=i+1-6;
+          g1.level[0]=3;
+          g1.level[1]=i+1-6;
         }
-        g.timeLimit += millis()/1000;
+        g1.timeLimit += millis()/1000;
         clickJudge[1]=true;
       }
+    }
+  }else if(clickJudge[12]!=true){
+    if(g1.clear==true){
+      clickJudge[12]=true;
     }
   }
 }
