@@ -4,6 +4,8 @@ abstract class Game{
   int[] level;
   int colN;
   int objN;
+  int verticulitem;
+  int horizunitem;
   int items;
   color[] colset;
   boolean clear = false;
@@ -11,9 +13,11 @@ abstract class Game{
   Colors c;
   Dataset s;
   
-  Game(int[] lev,int it,int co, int ob){
+  Game(int[] lev,int ver,int hol,int co, int ob){
     level = lev;
-    items = it;
+    verticulitem = ver;
+    horizunitem = hol;
+    items = hol*ver;
     colN = co;
     objN = ob;
     colset = new color[colN];
