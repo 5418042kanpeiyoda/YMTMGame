@@ -4,8 +4,6 @@ abstract class Game{
   int[] level;
   int colN;
   int objN;
-  int verticulitem;
-  int horizunitem;
   int items;
   color[] colset;
   boolean clear = false;
@@ -13,11 +11,9 @@ abstract class Game{
   Colors c;
   Dataset s;
   
-  Game(int[] lev,int ver,int hol,int co, int ob){
+  Game(int[] lev,int it,int co, int ob){
     level = lev;
-    verticulitem = ver;
-    horizunitem = hol;
-    items = hol*ver;
+    items = it;
     colN = co;
     objN = ob;
     colset = new color[colN];
@@ -83,6 +79,8 @@ abstract class Game{
       if(dist(mouseX,mouseY,x,y) < 50){
         if(obj == s.terobj && col == s.tercol){
           clear = true;
+        } else {
+          timeLimit -= 1;
         }
       }
     }
@@ -145,15 +143,15 @@ abstract class Game{
         }  
         vertex(R*cos(radians(90*i)), R*sin(radians(90*i)));
       }
-    endShape(CLOSE);
-    popMatrix();
-  }else if(n == 5){
-    float vertical = 30.5;
-    float side = 100;
-    rect(x, y, side, vertical);
-    rect(x, y, vertical, side);
-    noStroke();
-    rect(x,y,vertical+4,vertical+4);
-  }
+      endShape(CLOSE);
+      popMatrix();
+    }else if(n == 5){
+      float vertical = 30.5;
+      float side = 100;
+      rect(x, y, side, vertical);
+      rect(x, y, vertical, side);
+      noStroke();
+      rect(x,y,vertical+4,vertical+4);
+    }
   }
 }
