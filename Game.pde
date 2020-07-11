@@ -10,6 +10,7 @@ abstract class Game{
   color[] colset;
   boolean clear = false;
   int cleartime = 0;
+  boolean click = false;
   Colors c;
   Dataset s;
   
@@ -78,15 +79,20 @@ abstract class Game{
     text("LEVEL:"+level[1], 1000, 95);
   }
   
-  void checkInObj(int obj, int col,float x, float y){
+  void checkInObj(int obj, int col, float x, float y){ 
     if(mousePressed){
       if(dist(mouseX,mouseY,x,y) < 50){
         if(obj == s.terobj && col == s.tercol){
           clear = true;
-        } else {
-          timeLimit -= 1;
+        }else{
+          if(click==false){
+            timeLimit -= 5;
+            click = true;
+          }
         }
       }
+    }else{
+      click=false;
     }
   }
   
