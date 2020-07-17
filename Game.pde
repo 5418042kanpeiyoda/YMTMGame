@@ -44,10 +44,10 @@ abstract class Game{
       drawobj();
       drawTop();
       cleartime = countDown;
-    }else if(countDown > 0 && clear == true){
+    }else if(clear == true){
       text("CLEAR", width/2, height/2);
       text("ClearTime: " + (60-cleartime) + "seonds", width/2, height/2 + 100);
-    }else{
+    }else if(countDown <= 0 && clear == false){
       text("TimeUp", width/2, height/2);
     }
   }
