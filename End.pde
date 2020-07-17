@@ -2,8 +2,9 @@ class End {
   color white;
   color black;
   int textSize;
+  int clearTime;
   boolean clear_Judge;
-   
+  
   End() {
     white = 255;
     black = 0;
@@ -13,16 +14,13 @@ class End {
   
   void display() {
     background(img);
-  }
-  
-  void example() {
     if(clear_Judge) {
       textSize(textSize*1.5);
       fill(black);
       text("CLEAR",width/2,height/5.5);
       textSize(textSize*0.5);
       fill(black);
-      text("クリアタイム: 秒", width/2,height/3.1);
+      text("クリアタイム: "+clearTime+"秒", width/2,height/3.1);
       fill(white);
       rect(width/2,height/2,width/2.8,height/7);
       textSize(textSize*0.75);
