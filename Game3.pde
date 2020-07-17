@@ -28,7 +28,7 @@ class Game3 extends Game {
   }
   
   void moveobj(int i, int j, int cnt, int s) {
-    if(i % 2 == 0) {
+    if(i % 2 == 0  == j % 2  ) {
       x[cnt] += s;
       y[cnt] += s;
     } else {
