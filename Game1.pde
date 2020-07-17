@@ -1,7 +1,6 @@
 class Game1 extends Game{
   float x[] = new float[items];
-  float y[] = new float[items];
-  
+  float y[] = new float[items]; 
   Game1(int[] lev,int ver,int hol, int co, int ob){
     super(lev,ver,hol,co,ob);
     int cnt = 0;
