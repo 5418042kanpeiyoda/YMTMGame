@@ -28,23 +28,23 @@ class Game3 extends Game {
   }
   
   void moveobj(int i, int j, int cnt, int s) {
-    if(i % 2 == 0  == j % 2  ) {
+    if(i % 2  == j % 2  ) {
       x[cnt] += s;
       y[cnt] += s;
     } else {
       x[cnt] -= s;
       y[cnt] -= s;
     }
-    if(i % 2 == 0 && y[cnt] > height + 25) {
-      y[cnt] = 100;
+    if(y[cnt] > height + 25) {
+      y[cnt] = 150;
     }
-    if(i % 2 == 1 && y[cnt] < 50){
+    if(y[cnt] < 150){
       y[cnt] = height+25;
     }
-    if(i % 2 == 0 && x[cnt] > width + 25) {
-      x[cnt] = 100;
+    if(x[cnt] > width + 25) {
+      x[cnt] = -25;
     }    
-    if(i % 2 == 1 && x[cnt] < 50){
+    if(x[cnt] < -25){
       x[cnt] = width+25;
     }
   }
