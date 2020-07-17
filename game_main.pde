@@ -72,8 +72,6 @@ void draw(){
         }
       }
     }
-  }else{
-    e.display();
   }
 }
 
