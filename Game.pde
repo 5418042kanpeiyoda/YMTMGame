@@ -9,11 +9,11 @@ abstract class Game{
   int items;
   color[] colset;
   boolean clear = false;
-  int cleartime = 0;
   boolean click = false;
+  int cleartime = 0;
   Colors c;
   Dataset s;
-  
+  End e;
   Game(int[] lev,int ver,int hol,int co, int ob){
     level = lev;
     verticulitem = ver;
@@ -24,31 +24,18 @@ abstract class Game{
     colset = new color[colN];
     s = new Dataset(items);
     c = new Colors();
+    e = new End();
     colset = c.randset(colN);
     s.dset(objN,colset);
-     println("tercol"+s.tercol+"  terobj"+s.terobj);
-    for(int i = 0; i < items; i++){
-      if(s.colors[i] == s.tercol && s.terobj  == s.objects[i]){
-        print("   ");
-      }
-      println("col"+s.colors[i] + "col"+s.objects[i] );
-    }
   }
-  
   void mainGame(){
     background(colset[0]);
     int ms = millis()/1000;
     countDown = timeLimit - ms;
-    
     if(countDown > 0 && clear == false){
       drawobj();
       drawTop();
-      cleartime = countDown;
-    }else if(clear == true){
-      text("CLEAR", width/2, height/2);
-      text("ClearTime: " + (60-cleartime) + "seonds", width/2, height/2 + 100);
-    }else if(countDown <= 0 && clear == false){
-      text("TimeUp", width/2, height/2);
+      cleartime = timeLimit - countDown;
     }
   }
   
@@ -68,15 +55,15 @@ abstract class Game{
     
     fill(0);
     textSize(60);
-    text(countDown, 700, 78);
+    text(countDown, 700, 60);
     if(level[0] == 1){
-      text("EASY",200, 95);
+      text("EASY",200, 75);
     }else if(level[0] == 2){
-      text("NORMAL",200, 95);
+      text("NORMAL",200, 75);
     }else{
-      text("HARD",200, 95);
+      text("HARD",200, 75);
     }
-    text("LEVEL:"+level[1], 1000, 95);
+    text("LEVEL:"+level[1], 1000, 75);
   }
   
   void checkInObj(int obj, int col, float x, float y){ 
@@ -153,15 +140,15 @@ abstract class Game{
         }  
         vertex(R*cos(radians(90*i)), R*sin(radians(90*i)));
       }
-      endShape(CLOSE);
-      popMatrix();
-    }else if(n == 5){
-      float vertical = 30.5;
-      float side = 100;
-      rect(x, y, side, vertical);
-      rect(x, y, vertical, side);
-      noStroke();
-      rect(x,y,vertical+4,vertical+4);
-    }
+    endShape(CLOSE);
+    popMatrix();
+  }else if(n == 5){
+    float vertical = 30.5;
+    float side = 100;
+    rect(x, y, side, vertical);
+    rect(x, y, vertical, side);
+    noStroke();
+    rect(x,y,vertical+4,vertical+4);
+  }
   }
 }
