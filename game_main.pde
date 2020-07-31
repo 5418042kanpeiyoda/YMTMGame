@@ -49,29 +49,104 @@ void draw(){
       if(0<=i&&i<=2&&clickJudge[i+2]==true){
         if(i==0){
           g1_1.mainGame();
+          if(g1_1.clear){
+            e.clearTime = 60-(g1_1.timeLimit-g1_1.cleartime);
+            e.clear_Judge = true;
+            clickJudge[12]=true;
+          }else if(g1_1.countDown<0){
+            e.clear_Judge = false;
+            clickJudge[12]=true;
+          }
         }else if(i==1){
           g1_2.mainGame();
+          if(g1_2.clear){
+            e.clearTime = 60-(g1_2.timeLimit-g1_2.cleartime);
+            e.clear_Judge = true;
+            clickJudge[12]=true;
+          }else if(g1_2.countDown<0){
+            e.clear_Judge = false;
+            clickJudge[12]=true;
+          }
         }else if(i==2){
           g1_3.mainGame();
+          if(g1_3.clear){
+            e.clearTime = 60-(g1_3.timeLimit-g1_3.cleartime);;
+            e.clear_Judge = true;
+            clickJudge[12]=true;
+          }else if(g1_3.countDown<0){
+            e.clear_Judge = false;
+            clickJudge[12]=true;
+          }
         }
       }if(3<=i&&i<=5&&clickJudge[i+2]==true){
         if(i==3){
           g2_1.mainGame();
+          if(g2_1.clear){
+            e.clearTime = 60-(g2_1.timeLimit-g2_1.cleartime);
+            e.clear_Judge = true;
+            clickJudge[12]=true;
+          }else if(g2_1.countDown<0){
+            e.clear_Judge = false;
+            clickJudge[12]=true;
+          }
         }else if(i==4){
           g2_2.mainGame();
+          if(g2_2.clear){
+            e.clearTime = 60-(g2_2.timeLimit-g2_2.cleartime);
+            e.clear_Judge = true;
+            clickJudge[12]=true;
+          }else if(g2_2.countDown<0){
+            e.clear_Judge = false;
+            clickJudge[12]=true;
+          }
         }else if(i==5){
           g2_3.mainGame();
+          if(g2_3.clear){
+            e.clearTime = 60-(g2_3.timeLimit-g2_3.cleartime);;
+            e.clear_Judge = true;
+            clickJudge[12]=true;
+          }else if(g2_3.countDown<0){
+            e.clear_Judge = false;
+            clickJudge[12]=true;
+          }
         }
       }if(6<=i&&i<=8&&clickJudge[i+2]==true){
         if(i==6){
           g3_1.mainGame();
+          if(g3_1.clear){
+            e.clearTime = 60-(g3_1.timeLimit-g3_1.cleartime);;
+            e.clear_Judge = true;
+            clickJudge[12]=true;
+          }else if(g3_1.countDown<0){
+            e.clear_Judge = false;
+            clickJudge[12]=true;
+          }
         }else if(i==7){
           g3_2.mainGame();
+          if(g3_2.clear){
+            e.clearTime = 60-(g3_2.timeLimit-g3_2.cleartime);;
+            e.clear_Judge = true;
+            clickJudge[12]=true;
+          }else if(g3_2.countDown<0){
+            e.clear_Judge = false;
+            clickJudge[12]=true;
+          }
         }else if(i==8){
           g3_3.mainGame();
+          if(g3_3.clear){
+            e.clearTime = 60-(g3_3.timeLimit-g3_3.cleartime);;
+            e.clear_Judge = true;
+            clickJudge[12]=true;
+          }else if(g3_3.countDown<0){
+            e.clear_Judge = false;
+            clickJudge[12]=true;
+          }
         }
       }
     }
+  }else if(clickJudge[13]!=true){
+    e.display();
+    
   }
 }
 
@@ -104,6 +179,7 @@ void mouseClicked(){
             level[1]=1;
           }else if(i==4){
             g2_2.timeLimit += millis()/1000;
+            println(g2_2.timeLimit+" "+millis()/1000);
             level[1]=2;
           }else if(i==5){
             g2_3.timeLimit += millis()/1000;
@@ -129,9 +205,98 @@ void mouseClicked(){
         clickJudge[1]=true;
       }
     }
+  }else if(clickJudge[12]==true){
+    if(clickBox(width/2-(width/2.8/2),width/2+(width/2.8/2),height/2-height/14,height/2+height/14)){
+      for(int i=0;i<sl.rxr.length+1;i++){
+        if(0<=i&&i<=2&&clickJudge[i+2]==true){
+          if(i==0){
+            if(g1_1.clear){
+              g1_1.cleartime = 0;
+              g1_1.clear = false;
+              g1_1.timeLimit = 60;
+              g1_1.countDown = 0;
+              e.clear_Judge = false;
+            }
+          }else if(i==1){
+            if(g1_2.clear){
+              g1_2.cleartime = 0;
+              g1_2.clear = false;
+              g1_2.timeLimit = 60;
+              g1_2.countDown = 0;
+              e.clear_Judge = false;
+            }
+          }else if(i==2){
+            if(g1_3.clear){
+              g1_3.cleartime = 0;
+              g1_3.clear = false;
+              g1_3.timeLimit = 60;
+              g1_3.countDown = 0;
+              e.clear_Judge = false;
+            }
+          }
+        }if(3<=i&&i<=5&&clickJudge[i+2]==true){
+          if(i==3){
+            if(g2_1.clear){
+              g2_1.cleartime = 0;
+              g2_1.clear = false;
+              g2_1.timeLimit = 60;
+              g2_1.countDown = 0;
+              e.clear_Judge = false;
+            }
+          }else if(i==4){
+            if(g2_2.clear){
+              g2_2.cleartime = 0;
+              g2_2.clear = false;
+              g2_2.timeLimit = 60;
+              g2_2.countDown = 0;
+              e.clear_Judge = false;
+            }
+          }else if(i==5){
+            if(g2_3.clear){
+              g2_3.cleartime = 0;
+              g2_3.clear = false;
+              g2_3.timeLimit = 60;
+              g2_3.countDown = 0;
+              e.clear_Judge = false;
+            }
+          }
+        }if(6<=i&&i<=8&&clickJudge[i+2]==true){
+          if(i==6){
+            if(g3_1.clear){
+              g3_1.cleartime = 0;
+              g3_1.clear = false;
+              g3_1.timeLimit = 60;
+              g3_1.countDown = 0;
+              e.clear_Judge = false;
+            }
+          }else if(i==7){
+            if(g3_2.clear){
+              g3_2.cleartime = 0;
+              g3_2.clear = false;
+              g3_2.timeLimit = 60;
+              g3_2.countDown = 0;
+              e.clear_Judge = false;
+            }
+          }else if(i==8){
+            if(g3_3.clear){
+              g3_3.cleartime = 0;
+              g3_3.clear = false;
+              g3_3.timeLimit = 60;
+              g3_3.countDown = 0;
+              e.clear_Judge = false;
+            }
+          }
+        }
+        clickJudge[i]=false;
+      }
+      clickJudge[12]=false;
+    }
+    if(clickBox(width/2-width/5.6,width/2+width/5.6,height/1.5,height/1.5+height/7)){
+      clickJudge[12]=false;
+    }
   }
 }
-boolean clickBox(int rxl,int rxr,int ryu,int ryb){
+boolean clickBox(float rxl,float rxr,float ryu,float ryb){
   if(rxl<=mouseX&&mouseX<=rxr){
     if(ryu<=mouseY&&mouseY<=ryb){
       return true;
