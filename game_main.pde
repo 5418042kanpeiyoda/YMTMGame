@@ -17,7 +17,7 @@ Game g3_1 = new Game3(level, 5, 8, col, obj);
 Game g3_2 = new Game3(level, 6, 10, col, obj);
 Game g3_3 = new Game3(level, 7, 12, col, obj);
 //初期画面の判定
-int len=100;
+int len=15;
 boolean[] clickJudge = new boolean[len];
 //画像を引き継ぐための変数
 PImage img ;
@@ -179,7 +179,6 @@ void mouseClicked(){
             level[1]=1;
           }else if(i==4){
             g2_2.timeLimit += millis()/1000;
-            println(g2_2.timeLimit+" "+millis()/1000);
             level[1]=2;
           }else if(i==5){
             g2_3.timeLimit += millis()/1000;
@@ -210,81 +209,63 @@ void mouseClicked(){
       for(int i=0;i<sl.rxr.length+1;i++){
         if(0<=i&&i<=2&&clickJudge[i+2]==true){
           if(i==0){
-            if(g1_1.clear){
-              g1_1.cleartime = 0;
-              g1_1.clear = false;
-              g1_1.timeLimit = 60;
-              g1_1.countDown = 0;
-              e.clear_Judge = false;
-            }
+            g1_1.cleartime = 0;
+            g1_1.clear = false;
+            g1_1.timeLimit = 60;
+            g1_1.countDown = 0;
+            e.clear_Judge = false;
           }else if(i==1){
-            if(g1_2.clear){
-              g1_2.cleartime = 0;
-              g1_2.clear = false;
-              g1_2.timeLimit = 60;
-              g1_2.countDown = 0;
-              e.clear_Judge = false;
-            }
+            g1_2.cleartime = 0;
+            g1_2.clear = false;
+            g1_2.timeLimit = 60;
+            g1_2.countDown = 0;
+            e.clear_Judge = false;
           }else if(i==2){
-            if(g1_3.clear){
-              g1_3.cleartime = 0;
-              g1_3.clear = false;
-              g1_3.timeLimit = 60;
-              g1_3.countDown = 0;
-              e.clear_Judge = false;
-            }
+            g1_3.cleartime = 0;
+            g1_3.clear = false;
+            g1_3.timeLimit = 60;
+            g1_3.countDown = 0;
+            e.clear_Judge = false;
           }
         }if(3<=i&&i<=5&&clickJudge[i+2]==true){
           if(i==3){
-            if(g2_1.clear){
-              g2_1.cleartime = 0;
-              g2_1.clear = false;
-              g2_1.timeLimit = 60;
-              g2_1.countDown = 0;
-              e.clear_Judge = false;
-            }
+            g2_1.cleartime = 0;
+            g2_1.clear = false;
+            g2_1.timeLimit = 60;
+            g2_1.countDown = 0;
+            e.clear_Judge = false;
           }else if(i==4){
-            if(g2_2.clear){
-              g2_2.cleartime = 0;
-              g2_2.clear = false;
-              g2_2.timeLimit = 60;
-              g2_2.countDown = 0;
-              e.clear_Judge = false;
-            }
+            g2_2.cleartime = 0;
+            g2_2.clear = false;
+            g2_2.timeLimit = 60;
+            g2_2.countDown = 0;
+            e.clear_Judge = false;
           }else if(i==5){
-            if(g2_3.clear){
-              g2_3.cleartime = 0;
-              g2_3.clear = false;
-              g2_3.timeLimit = 60;
-              g2_3.countDown = 0;
-              e.clear_Judge = false;
-            }
+            g2_3.cleartime = 0;
+            g2_3.clear = false;
+            g2_3.timeLimit = 60;
+            g2_3.countDown = 0;
+            e.clear_Judge = false;
           }
         }if(6<=i&&i<=8&&clickJudge[i+2]==true){
           if(i==6){
-            if(g3_1.clear){
-              g3_1.cleartime = 0;
-              g3_1.clear = false;
-              g3_1.timeLimit = 60;
-              g3_1.countDown = 0;
-              e.clear_Judge = false;
-            }
+            g3_1.cleartime = 0;
+            g3_1.clear = false;
+            g3_1.timeLimit = 60;
+            g3_1.countDown = 0;
+            e.clear_Judge = false;
           }else if(i==7){
-            if(g3_2.clear){
-              g3_2.cleartime = 0;
-              g3_2.clear = false;
-              g3_2.timeLimit = 60;
-              g3_2.countDown = 0;
-              e.clear_Judge = false;
-            }
+            g3_2.cleartime = 0;
+            g3_2.clear = false;
+            g3_2.timeLimit = 60;
+            g3_2.countDown = 0;
+            e.clear_Judge = false;
           }else if(i==8){
-            if(g3_3.clear){
-              g3_3.cleartime = 0;
-              g3_3.clear = false;
-              g3_3.timeLimit = 60;
-              g3_3.countDown = 0;
-              e.clear_Judge = false;
-            }
+            g3_3.cleartime = 0;
+            g3_3.clear = false;
+            g3_3.timeLimit = 60;
+            g3_3.countDown = 0;
+            e.clear_Judge = false;
           }
         }
         clickJudge[i]=false;
@@ -292,6 +273,70 @@ void mouseClicked(){
       clickJudge[12]=false;
     }
     if(clickBox(width/2-width/5.6,width/2+width/5.6,height/1.5,height/1.5+height/7)){
+      for(int i=0;i<sl.rxr.length+1;i++){
+        if(0<=i&&i<=2&&clickJudge[i+2]==true){
+          if(i==0){
+            g1_1.cleartime = 0;
+            g1_1.clear = false;
+            g1_1.timeLimit = 60 + millis()/1000;
+            g1_1.countDown = 0;
+            e.clear_Judge = false;
+          }else if(i==1){
+            g1_2.cleartime = 0;
+            g1_2.clear = false;
+            g1_2.timeLimit = 60 + millis()/1000;
+            g1_2.countDown = 0;
+            e.clear_Judge = false;
+          }else if(i==2){
+            g1_3.cleartime = 0;
+            g1_3.clear = false;
+            g1_3.timeLimit = 60 + millis()/1000;
+            g1_3.countDown = 0;
+            e.clear_Judge = false;
+          }
+        }if(3<=i&&i<=5&&clickJudge[i+2]==true){
+          if(i==3){
+            g2_1.cleartime = 0;
+            g2_1.clear = false;
+            g2_1.timeLimit = 60 + millis()/1000;
+            g2_1.countDown = 0;
+            e.clear_Judge = false;
+          }else if(i==4){
+            g2_2.cleartime = 0;
+            g2_2.clear = false;
+            g2_2.timeLimit = 60 + millis()/1000;
+            g2_2.countDown = 0;
+            e.clear_Judge = false;
+          }else if(i==5){
+            g2_3.cleartime = 0;
+            g2_3.clear = false;
+            g2_3.timeLimit = 60 + millis()/1000;
+            g2_3.countDown = 0;
+            e.clear_Judge = false;
+          }
+        }if(6<=i&&i<=8&&clickJudge[i+2]==true){
+          if(i==6){
+            //if(g3_1.clear){
+            g3_1.cleartime = 0;
+            g3_1.clear = false;
+            g3_1.timeLimit = 60 + millis()/1000;
+            g3_1.countDown = 0;
+            e.clear_Judge = false;
+          }else if(i==7){
+            g3_2.cleartime = 0;
+            g3_2.clear = false;
+            g3_2.timeLimit = 60 + millis()/1000;
+            g3_2.countDown = 0;
+            e.clear_Judge = false;
+          }else if(i==8){
+            g3_3.cleartime = 0;
+            g3_3.clear = false;
+            g3_3.timeLimit = 60 + millis()/1000;
+            g3_3.countDown = 0;
+            e.clear_Judge = false;
+          }
+        }
+      }
       clickJudge[12]=false;
     }
   }
