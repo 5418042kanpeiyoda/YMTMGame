@@ -1,7 +1,6 @@
 class Game2 extends Game{
   float x[] = new float[items];
   float y[] = new float[items];
-  
   Game2(int[] lev,int ver,int hol, int co, int ob){
     super(lev,ver,hol,co,ob);
     int cnt = 0;
@@ -14,7 +13,7 @@ class Game2 extends Game{
     }
   }
   void drawobj(){
-  int cnt = 0;
+    int cnt = 0;
     for(int i = 0; i < horizunitem; i++){
       for(int j = 0; j < verticulitem; j++){
         fill(colset[s.colors[cnt]]);
@@ -25,6 +24,7 @@ class Game2 extends Game{
       }
     }
   }
+  
   void moveobj(int i,int j,int cnt,int s){  
     if(i % 2 == 0){
       y[cnt] += s;
