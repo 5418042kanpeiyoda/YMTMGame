@@ -3,7 +3,6 @@ class Dataset{
   int[] objects;
   int[] colors;
   int terobj,tercol;
-  
   Dataset(int n){
     items = n;
     objects = new int[n];
