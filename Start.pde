@@ -17,6 +17,8 @@ class Start {
     fill(white);
     rect(w/2,h/2,w/3,h/5);
     fill(black);
+    textSize(150);
+    text("Attack Target",width/2,height/6);
     textSize(h/6);
     text("PLAY",w/2,h/2);
   }
