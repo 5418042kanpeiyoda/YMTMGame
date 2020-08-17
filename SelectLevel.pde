@@ -21,6 +21,8 @@ class SelectLevel{
     stroke(black);
     textSize(h/15);
     int k = 0;
+    fill(0);
+    text("ダブルクリックしてね！！",width/2,height/8);
     for(int i=0;i<3;i++){
       for(int j=0;j<4;j++){
         if(j==0){
@@ -45,6 +47,5 @@ class SelectLevel{
         }
       }
     }
-    
   }
 }
