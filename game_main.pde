@@ -206,7 +206,7 @@ void mouseClicked(){
     }
   }else if(clickJudge[12]==true){
     if(clickBox(width/2-(width/2.8/2),width/2+(width/2.8/2),height/2-height/14,height/2+height/14)){
-      for(int i=0;i<sl.rxr.length+1;i++){
+      for(int i=0;i<sl.rxr.length+2;i++){
         if(0<=i&&i<=2&&clickJudge[i+2]==true){
           if(i==0){
             g1_1.cleartime = 0;
@@ -273,7 +273,7 @@ void mouseClicked(){
       clickJudge[12]=false;
     }
     if(clickBox(width/2-width/5.6,width/2+width/5.6,height/1.5,height/1.5+height/7)){
-      for(int i=0;i<sl.rxr.length+1;i++){
+      for(int i=0;i<sl.rxr.length+2;i++){
         if(0<=i&&i<=2&&clickJudge[i+2]==true){
           if(i==0){
             g1_1.cleartime = 0;
